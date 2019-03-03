@@ -18,13 +18,19 @@ func New() *Scanner {
 
 func (sc *Scanner) NextInt() int {
 	sc.sc.Scan()
-	i, _ := strconv.Atoi(sc.sc.Text())
+	i, err := strconv.Atoi(sc.sc.Text())
+	if err != nil {
+		panic(err)
+	}
 	return i
 }
 
 func (sc *Scanner) NextFloat64() float64 {
 	sc.sc.Scan()
-	f, _ := strconv.ParseFloat(sc.sc.Text(), 64)
+	f, err := strconv.ParseFloat(sc.sc.Text(), 64)
+	if err != nil {
+		panic(err)
+	}
 	return f
 }
 
